@@ -12,20 +12,20 @@ public class BookService implements IBookService{
 	List<Book> books = new ArrayList<Book>();
 
 	/**
-	 * adding products to the List
+	 * adding books to the List
 	 */
 	public BookService() {
 		super();
-		books.add(new Book("adsfdsfa1", "title1", "author1", 20, 6, 6));
-		books.add(new Book("adsfdsfa2", "title2", "author1", 30, 3, 6));
-		books.add(new Book("adsfdsfa3", "title3", "author1", 40, 7, 6));
-		books.add(new Book("adsfdsfa4", "title4", "author1", 50, 1, 6));
-		books.add(new Book("adsfdsfa5", "title5", "author1", 60, 5, 6));
-		books.add(new Book("adsfdsfa6", "title6", "author1", 70, 4, 6));
+		books.add(new Book(1,"Adsfdsfa1", "Title1", "Author1", 2001, 6));
+		books.add(new Book(2,"Adsfdsfa2", "Title2", "Author1", 2002, 3));
+		books.add(new Book(3,"Adsfdsfa3", "Title3", "Author1", 2003, 7));
+		books.add(new Book(4,"Adsfdsfa4", "Title4", "Author1", 2004, 1));
+		books.add(new Book(5,"Adsfdsfa5", "Title5", "Author1", 2005, 5));
+		books.add(new Book(6,"Adsfdsfa6", "Title6", "Author1", 2006, 4));
 	}
-
+	
 	/**
-	 * returns a list of product
+	 * returns a list of books
 	 */
 	@Override
 	public List<Book> findAll() {

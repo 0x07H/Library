@@ -3,6 +3,7 @@ package gr.upatras.Library;
 
 public class Book {
 
+	private int id;
 	private String ISBN;
 	private String title;
 	private String Author;
@@ -11,62 +12,31 @@ public class Book {
 	private int  available;
 
 
-	public Book(String ISBN, String title, String Author, int year, int quantity, int available) {
+	public Book(int id, String iSBN, String title, String author, int year, int quantity) {
 		super();
-		this.ISBN = ISBN;
+		this.id = id;
+		ISBN = iSBN;
 		this.title = title;
-		this.Author = Author;
+		Author = author;
 		this.year = year;
 		this.quantity = quantity;
-		this.available = available;
-		}
-
+		//Availability is the same as quantity on setup
+		this.available = quantity;
+	}
 
 	/**
-	 * @return the iSBN
+	 * @return the id
 	 */
-	public String getISBN() {
-		return ISBN;
+	public int getId() {
+		return id;
 	}
 
 
 	/**
-	 * @param iSBN the iSBN to set
+	 * @param id the id to set
 	 */
-	public void setISBN(String iSBN) {
-		ISBN = iSBN;
-	}
-
-
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
-
-
-	/**
-	 * @param title the title to set
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-	/**
-	 * @return the author
-	 */
-	public String getAuthor() {
-		return Author;
-	}
-
-
-	/**
-	 * @param author the author to set
-	 */
-	public void setAuthor(String author) {
-		Author = author;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
@@ -117,5 +87,51 @@ public class Book {
 		this.available = available;
 	}
 
-	
+
+	/**
+	 * @return the iSBN
+	 */
+	public String getISBN() {
+		return ISBN;
+	}
+
+
+	/**
+	 * @param iSBN the iSBN to set
+	 */
+	public void setISBN(String iSBN) {
+		ISBN = iSBN;
+	}
+
+
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	/**
+	 * @return the author
+	 */
+	public String getAuthor() {
+		return Author;
+	}
+
+
+	/**
+	 * @param author the author to set
+	 */
+	public void setAuthor(String author) {
+		Author = author;
+	}
 }

@@ -38,9 +38,9 @@ public class BookController {
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
 	@RequestMapping(value = "/book/", produces = { "application/json;charset=utf-8" }, method = RequestMethod.GET)
 	public List<Book> getBook() {
-		// finds all the products
+		// finds all the Books
 		List<Book> books = bookService.findAll();
-		// returns the product list
+		// returns the Book list
 		return books;
 	}
 
@@ -55,14 +55,14 @@ public class BookController {
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
 	@RequestMapping(value = "/book/{isbn}", produces = {
 			"application/json;charset=utf-8" }, method = RequestMethod.GET)
-	public Book getProductById(
+	public Book getBookbyISBN(
 		@ApiParam(value = "Identifier of the Category", required = true) @PathVariable("isbn") String isbn) {
-		log.info(String.format("Will return product with ISBN %s", isbn));
-		Book product = bookService.findByISBN(isbn);
-		return product;
+		log.info(String.format("Will return Book with ISBN %s", isbn));
+		Book book = bookService.findByISBN(isbn);
+		return book;
 	}
 
-	@ApiOperation(value = "Deletes a Product by ISBN", notes = "This operation retrieves a Book entry. ", response = Book.class)
+	@ApiOperation(value = "Deletes a Book by ISBN", notes = "This operation retrieves a Book entry. ", response = Book.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Book.class),
 			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
 			@ApiResponse(code = 401, message = "Unauthorized", response = Error.class),
@@ -92,9 +92,9 @@ public class BookController {
 			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
 			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
-	@RequestMapping(value = "/product", produces = { "application/json;charset=utf-8" }, consumes = {
+	@RequestMapping(value = "/book", produces = { "application/json;charset=utf-8" }, consumes = {
 			"application/json;charset=utf-8" }, method = RequestMethod.POST)
-	public ResponseEntity<Book> createProduct(
+	public ResponseEntity<Book> createBook(
 			@ApiParam(value = "The Book to be created", required = true) @RequestBody Book b) {
 		log.info("Will add a new book");
 		Book book = bookService.addBook(b);
@@ -112,9 +112,9 @@ public class BookController {
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
 	@RequestMapping(value = "/book/{isbn}", produces = { "application/json;charset=utf-8" }, consumes = {
 			"application/json;charset=utf-8" }, method = RequestMethod.PATCH)
-	ResponseEntity<Book> patchProduct(
+	ResponseEntity<Book> patchBook(
 			@ApiParam(value = "The Book to be updated", required = true) @RequestBody Book body,
-			@ApiParam(value = "Identifier of the Product", required = true) @PathVariable("isbn") String isbn) {
+			@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("isbn") String isbn) {
 		Book book = bookService.rentBook(body);
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
 	}
