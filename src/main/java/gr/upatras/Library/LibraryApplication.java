@@ -6,13 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringBootApplication
 public class LibraryApplication {
-	
-	@Autowired
-	BookRepo bookrepo;
-	
-	@Autowired
-	StudentRepo studentrepo;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(LibraryApplication.class, args);
 		
