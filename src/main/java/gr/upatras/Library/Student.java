@@ -9,33 +9,46 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String Name;
+	private String firstname;
+    private String lastname;
 	private int allowance;
 	
     public Student(){
     }
 	
-	public Student(int id, String Name, int allowance) {
-		this.Name = Name;
+	public Student(int id, String firstname, String lastname, int allowance) {
+		this.firstname = firstname;
+        this.lastname = lastname;
 		this.allowance = allowance;
 	}
 
-
 	/**
-	 * @return the id
+	 * @return the firstname
 	 */
-	public int getId() {
-		return id;
+	public String getFirstname() {
+		return firstname;
 	}
 
-
 	/**
-	 * @return the name
+	 * @param firstname the firstname to set
 	 */
-	public String getName() {
-		return Name;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
+	/**
+	 * @return the lastname
+	 */
+	public String getLastname() {
+		return lastname;
+	}
+
+	/**
+	 * @param lastname the lastname to set
+	 */
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
 	/**
 	 * @return the allowance
@@ -44,29 +57,11 @@ public class Student {
 		return allowance;
 	}
 
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.Name = name;
-	}
-
-
 	/**
 	 * @param allowance the allowance to set
 	 */
 	public void setAllowance(int allowance) {
 		this.allowance = allowance;
 	}
+
 }
-	
-	

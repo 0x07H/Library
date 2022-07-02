@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudentRepo extends CrudRepository<Student, Integer> {
-
+    List<Customer> findByLastName(String lastName);
 	Student findById(int id);
 }
-	
