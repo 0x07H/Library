@@ -1,9 +1,15 @@
 package gr.upatras.Library;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "book")
 public class Book {
-
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	
 	private String ISBN;
 	private String title;
 	private String Author;
@@ -12,9 +18,10 @@ public class Book {
 	private int  available;
 
 
-	public Book(int id, String iSBN, String title, String author, int year, int quantity) {
-		super();
-		this.id = id;
+	public Book() {
+	}
+	
+	public Book(String iSBN, String title, String author, int year, int quantity) {
 		ISBN = iSBN;
 		this.title = title;
 		Author = author;

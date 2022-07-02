@@ -1,15 +1,21 @@
 package gr.upatras.Library;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "student")
 public class Student {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String Name;
 	private int allowance;
 	
+    public Student(){
+    }
 	
 	public Student(int id, String Name, int allowance) {
-		super();
-		this.id = id;
 		this.Name = Name;
 		this.allowance = allowance;
 	}

@@ -16,12 +16,12 @@ public class BookService implements IBookService{
 	 */
 	public BookService() {
 		super();
-		books.add(new Book(1,"Adsfdsfa1", "Title1", "Author1", 2001, 6));
-		books.add(new Book(2,"Adsfdsfa2", "Title2", "Author1", 2002, 3));
-		books.add(new Book(3,"Adsfdsfa3", "Title3", "Author1", 2003, 7));
-		books.add(new Book(4,"Adsfdsfa4", "Title4", "Author1", 2004, 1));
-		books.add(new Book(5,"Adsfdsfa5", "Title5", "Author1", 2005, 5));
-		books.add(new Book(6,"Adsfdsfa6", "Title6", "Author1", 2006, 4));
+		books.add(new Book("Adsfdsfa1", "Title1", "Author1", 2001, 6));
+		books.add(new Book("Adsfdsfa2", "Title2", "Author1", 2002, 3));
+		books.add(new Book("Adsfdsfa3", "Title3", "Author1", 2003, 7));
+		books.add(new Book("Adsfdsfa4", "Title4", "Author1", 2004, 1));
+		books.add(new Book("Adsfdsfa5", "Title5", "Author1", 2005, 5));
+		books.add(new Book("Adsfdsfa6", "Title6", "Author1", 2006, 4));
 	}
 	
 	/**
