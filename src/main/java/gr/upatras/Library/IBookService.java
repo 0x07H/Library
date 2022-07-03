@@ -6,16 +6,19 @@ public interface IBookService {
 	/**
 	 * @return all books
 	 */
-	List<Book> findAll();
+	List<Book> getAllBooks();
 
-	Book findByISBN(String ISBN);
+	Book createBook(Book b);
 
-	Book addBook(Book b);
+	void deleteBook(int d);
 
-	Void deleteBook(String ISBN);
+	void updateBookTitle(int id, String str);
 
-	Book rentBook(Book b);
+	void updateBookISBN(int id, String str);
 
-	Book returnBook(Book b);
+	void updateBookAuthor(int id, String str);
 
+	void updateBookYear(int id, int year);
+
+	void updateBookQuantity(int id, int qnt);
 }

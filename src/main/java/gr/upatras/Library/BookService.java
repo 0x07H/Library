@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class BookService{// implements IBookService{
+public class BookService implements IBookService{
 
 // creating an object of ArrayList
 //	List<Book> books = new ArrayList<Book>();
@@ -22,12 +22,51 @@ public class BookService{// implements IBookService{
 		return books;
 	}
 	
+	public Book getBook(int id) {
+		return (Book) this.bookrepository.findById(id);
+	}
 
 	public Book createBook(Book b) {
 		this.bookrepository.save(b);
+		//we need to return a Book
 		return b;
 	}
 	
+	public void deleteBook(int id) {
+		this.bookrepository.deleteById(id);
+	}
+	
+	//UPDATE
+	public void updateBookTitle(int id, String str) {
+		Book book = this.bookrepository.findById(id);
+		book.setAuthor(str);
+		this.bookrepository.save(book);
+	}
+
+	public void updateBookISBN(int id, String str) {
+		Book book = this.bookrepository.findById(id);
+		book.setISBN(str);
+		this.bookrepository.save(book);
+	}
+	
+	public void updateBookAuthor(int id, String str) {
+		Book book = this.bookrepository.findById(id);
+		book.setAuthor(str);
+		this.bookrepository.save(book);
+	}
+	
+	public void updateBookYear(int id, int year) {
+		Book book = this.bookrepository.findById(id);
+		book.setYear(year);
+		this.bookrepository.save(book);
+	}
+	
+	public void updateBookQuantity(int id, int qnt) {
+		Book book = this.bookrepository.findById(id);
+		book.setYear(qnt);
+		this.bookrepository.save(book);
+	}
+
 	/**
 	 * adding books to the List
 	 */
