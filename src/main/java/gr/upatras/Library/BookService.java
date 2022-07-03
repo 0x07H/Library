@@ -13,7 +13,7 @@ public class BookService{// implements IBookService{
 //	List<Book> books = new ArrayList<Book>();
 	
 	@Autowired
-	private BookRepo bookrepo;
+	private BookRepository bookrepository;
 
 	
 	
