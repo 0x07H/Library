@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,11 +72,33 @@ public class BookController {
 	@RequestMapping(value = "/book/{id}", produces = {
 			"application/json;charset=utf-8" }, method = RequestMethod.GET)
 	public Book getBookbyID(
-		@ApiParam(value = "Identifier of the Category", required = true) @PathVariable("id") int id) {
+		@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("id") int id) {
 		log.info(String.format("Will return Book with id %d", id));
 		Book book = bookService.getBook(id);
 		return book;
 	}
+	
+	@ApiOperation(value = "Update Book Title by id", notes = "This operation updates a Book title. ", response = Book.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Book.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
+			@ApiResponse(code = 401, message = "Unauthorized", response = Error.class),
+			@ApiResponse(code = 403, message = "Forbidden", response = Error.class),
+			@ApiResponse(code = 404, message = "Not Found", response = Error.class),
+			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
+			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
+			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
+	@RequestMapping(value = "/book/{id}/{title}", produces = {
+			"application/json;charset=utf-8" }, method = RequestMethod.GET)
+	public Book updateBookTitle(
+		@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("id") int id,
+		@ApiParam(value = "Updated title of the Book", required = true) @PathVariable("title") String str){
+		log.info(String.format("Will update Book with id %d", id));
+		Book book = bookService.updateBookTitle(id, str);
+		return book;
+	}
+}
+
+
 /*
 	@ApiOperation(value = "Deletes a Book by ISBN", notes = "This operation retrieves a Book entry. ", response = Book.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Book.class),
@@ -120,5 +142,3 @@ public class BookController {
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
 		
 	}*/
-}
-

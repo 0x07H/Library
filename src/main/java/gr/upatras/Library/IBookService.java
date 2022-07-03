@@ -12,7 +12,7 @@ public interface IBookService {
 
 	void deleteBook(int d);
 
-	void updateBookTitle(int id, String str);
+	Book updateBookTitle(int id, String str);
 
 	void updateBookISBN(int id, String str);
 

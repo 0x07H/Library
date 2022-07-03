@@ -37,10 +37,11 @@ public class BookService implements IBookService{
 	}
 	
 	//UPDATE
-	public void updateBookTitle(int id, String str) {
+	public Book updateBookTitle(int id, String str) {
 		Book book = this.bookrepository.findById(id);
 		book.setAuthor(str);
 		this.bookrepository.save(book);
+		return book;
 	}
 
 	public void updateBookISBN(int id, String str) {
