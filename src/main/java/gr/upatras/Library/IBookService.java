@@ -14,11 +14,11 @@ public interface IBookService {
 
 	Book updateBookTitle(int id, String str);
 
-	void updateBookISBN(int id, String str);
+	Book updateBookISBN(int id, String str);
 
-	void updateBookAuthor(int id, String str);
+	Book updateBookAuthor(int id, String str);
 
-	void updateBookYear(int id, int year);
+	Book updateBookYear(int id, int year);
 
-	void updateBookQuantity(int id, int qnt);
+	Book updateBookQuantity(int id, int qnt);
 }

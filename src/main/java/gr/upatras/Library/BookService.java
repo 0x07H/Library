@@ -39,33 +39,37 @@ public class BookService implements IBookService{
 	//UPDATE
 	public Book updateBookTitle(int id, String str) {
 		Book book = this.bookrepository.findById(id);
-		book.setAuthor(str);
+		book.setTitle(str);
 		this.bookrepository.save(book);
 		return book;
 	}
 
-	public void updateBookISBN(int id, String str) {
+	public Book updateBookISBN(int id, String str) {
 		Book book = this.bookrepository.findById(id);
 		book.setISBN(str);
 		this.bookrepository.save(book);
+		return book;
 	}
 	
-	public void updateBookAuthor(int id, String str) {
+	public Book updateBookAuthor(int id, String str) {
 		Book book = this.bookrepository.findById(id);
 		book.setAuthor(str);
 		this.bookrepository.save(book);
+		return book;
 	}
 	
-	public void updateBookYear(int id, int year) {
+	public Book updateBookYear(int id, int year) {
 		Book book = this.bookrepository.findById(id);
 		book.setYear(year);
 		this.bookrepository.save(book);
+		return book;
 	}
 	
-	public void updateBookQuantity(int id, int qnt) {
+	public Book updateBookQuantity(int id, int qnt) {
 		Book book = this.bookrepository.findById(id);
 		book.setYear(qnt);
 		this.bookrepository.save(book);
+		return book;
 	}
 
 	/**

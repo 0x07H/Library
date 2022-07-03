@@ -96,7 +96,30 @@ public class BookController {
 		Book book = bookService.updateBookTitle(id, str);
 		return book;
 	}
+
+
+	@ApiOperation(value = "Update Book Author by id", notes = "This operation updates a Book author. ", response = Book.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Book.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
+			@ApiResponse(code = 401, message = "Unauthorized", response = Error.class),
+			@ApiResponse(code = 403, message = "Forbidden", response = Error.class),
+			@ApiResponse(code = 404, message = "Not Found", response = Error.class),
+			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
+			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
+			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
+	@RequestMapping(value = "/book/{id}/{author}", produces = {
+			"application/json;charset=utf-8" }, method = RequestMethod.GET)
+	public Book updateBookAuthor(
+		@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("id") int id,
+		@ApiParam(value = "Updated author of the Book", required = true) @PathVariable("author") String str){
+		log.info(String.format("Will update Book with id %d", id));
+		Book book = bookService.updateBookAuthor(id, str);
+		return book;
+	}
 }
+	
+	
+
 
 
 /*
