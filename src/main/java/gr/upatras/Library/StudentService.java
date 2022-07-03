@@ -23,6 +23,32 @@ public class StudentService {
 		 this.studentrepository.save(student);
 		 return student;
 	 }
+	 
+	 public void deleteStudent(int id) {
+		 this.studentrepository.deleteById(id);
+	 }
+	 
+	 //UPDATE
+	 public Student updateStudentFirstName(int id, String str) {
+		 Student student = this.studentrepository.findById(id);
+		 student.setFirstname(str);
+		 this.studentrepository.save(student);
+		 return student;
+	 }
+	 
+	 public Student updateStudentLastName(int id, String str) {
+		 Student student = this.studentrepository.findById(id);
+		 student.setLastname(str);
+		 this.studentrepository.save(student);
+		 return student;
+	 }
+	 
+	 public Student updateStudentAllowance(int id, int allowance) {
+		 Student student = this.studentrepository.findById(id);
+		 student.setAllowance(allowance);
+		 this.studentrepository.save(student);
+		 return student;
+	 }
 }
 
 
