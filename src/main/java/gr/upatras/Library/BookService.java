@@ -15,8 +15,18 @@ public class BookService{// implements IBookService{
 	@Autowired
 	private BookRepository bookrepository;
 
+	public List<Book> getAllBooks() {
+		List<Book> books = new ArrayList<>();
+		bookrepository.findAll()
+		.forEach(books::add);
+		return books;
+	}
 	
-	
+
+	public Book createBook(Book b) {
+		this.bookrepository.save(b);
+		return b;
+	}
 	
 	/**
 	 * adding books to the List
@@ -52,11 +62,6 @@ public class BookService{// implements IBookService{
 //		return null;
 //	}
 //
-//	@Override
-//	public Book addBook(Book b) {
-//		books.add(b);
-//		return b;
-//	}
 //
 //	@Override
 //	public Book rentBook(Book b) {
@@ -91,4 +96,3 @@ public class BookService{// implements IBookService{
 //		}
 //		return null;
 //	}
-}

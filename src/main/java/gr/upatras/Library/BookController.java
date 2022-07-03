@@ -23,10 +23,11 @@ import org.slf4j.LoggerFactory;
 
 @RestController
 public class BookController {
-//	@Autowired
-//	private IBookService bookService;
-	private static final Logger log = LoggerFactory.getLogger(BookController.class);
-	/*
+    @Autowired
+	private BookService bookService;
+	
+    private static final Logger log = LoggerFactory.getLogger(BookController.class);
+	
 	@ApiOperation(value = "Retrieves all Books", notes = "This operation retrieves all Book entries. ", response = Book.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Book.class),
 			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
@@ -37,13 +38,11 @@ public class BookController {
 			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
 	@RequestMapping(value = "/book/", produces = { "application/json;charset=utf-8" }, method = RequestMethod.GET)
-	public List<Book> getBook() {
-		// finds all the Books
-		List<Book> books = bookService.findAll();
-		// returns the Book list
-		return books;
+	public List<Book> getAllBooks() {
+		log.info("Will return all Books");
+		return bookService.getAllBooks();
 	}
-
+/*
 	@ApiOperation(value = "Retrieves a Book by ISBN", notes = "This operation retrieves a Book entry. ", response = Book.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Book.class),
 			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
@@ -83,6 +82,7 @@ public class BookController {
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	*/
 
 	@ApiOperation(value = "Creates a Book", notes = "This operation creates a Book entry.", response = Book.class)
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Created", response = Book.class),
@@ -97,10 +97,10 @@ public class BookController {
 	public ResponseEntity<Book> createBook(
 			@ApiParam(value = "The Book to be created", required = true) @RequestBody Book b) {
 		log.info("Will add a new book");
-		Book book = bookService.addBook(b);
+		Book book = bookService.createBook(b);
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
 	}
-
+/*
 	@ApiOperation(value = "Updates partially a Book", nickname = "patchBook", notes = "This operation updates partially a Book entrty.", response = Book.class )
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updated", response = Book.class),
 			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),			@ApiResponse(code = 401, message = "Unauthorized", response = Error.class),
