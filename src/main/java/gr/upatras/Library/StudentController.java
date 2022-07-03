@@ -4,12 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.HttpStatus;
 
 
 import java.util.List;
@@ -19,6 +21,9 @@ public class StudentController {
 	
 	@Autowired
 	private StudentService studentService;
+	
+	@Autowired
+	private BookService bookService;
 
 	private static final Logger log = LoggerFactory.getLogger(BookController.class);
 	
@@ -62,5 +67,19 @@ public class StudentController {
 	public void updateAllowance(@PathVariable  int id, @PathVariable int allowance) {
 		log.info("Update Lastname of student by ID students");
 		studentService.updateStudentAllowance(id, allowance);
+	}
+	
+	@PatchMapping("/lendBook/{bookId}/{studentid}")
+	public ResponseEntity<Book> lendBook(@PathVariable int bookid, @PathVariable int studentId) {
+		log.info("Lend book");
+		//TODO
+		Book book = bookService.getBook(bookid);
+		if (book.getBooklender() != null) {
+			return new ResponseEntity<>(book, null, HttpStatus.CONFLICT);
+		}
+		Student student = studentService.getStudentById(studentId);
+		book.setBooklender(student);
+		bookService.updateBook(book);
+		return new  ResponseEntity<>(book, null, HttpStatus.OK);
 	}
 }

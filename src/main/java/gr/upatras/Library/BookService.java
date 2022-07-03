@@ -32,6 +32,10 @@ public class BookService implements IBookService{
 		return b;
 	}
 	
+	public void updateBook(Book b) {
+		this.bookrepository.save(b);
+	}
+	
 	public void deleteBook(int id) {
 		this.bookrepository.deleteById(id);
 	}
