@@ -16,27 +16,66 @@ public class Book {
 	private String title;
 	private String Author;
     private int year;
-	private int  quantity;
-	private int  available;
-	private int booked;
 	
 	@ManyToOne
 	private Student booklender;
 
-
 	public Book() {
 	}
-	
-	public Book(String iSBN, String title, String author, int year, int quantity, int booked) {
-		ISBN = iSBN;
+
+	public Book(String ISBN, String title, String author, int year, Student booklender) {
+		this.ISBN = ISBN;
 		this.title = title;
 		Author = author;
 		this.year = year;
-		this.quantity = quantity;
-		//Availability is the same as quantity on setup
-		this.booked = booked;
-		this.available = quantity - booked;
+		this.booklender = booklender;
 	}
 
-	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getISBN() {
+		return ISBN;
+	}
+
+	public void setISBN(String ISBN) {
+		this.ISBN = ISBN;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return Author;
+	}
+
+	public void setAuthor(String author) {
+		Author = author;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public Student getBooklender() {
+		return booklender;
+	}
+
+	public void setBooklender(Student booklender) {
+		this.booklender = booklender;
+	}
 }
