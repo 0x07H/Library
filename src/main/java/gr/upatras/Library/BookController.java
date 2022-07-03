@@ -23,10 +23,10 @@ import org.slf4j.LoggerFactory;
 
 @RestController
 public class BookController {
-	@Autowired
-	private IBookService bookService;
+//	@Autowired
+//	private IBookService bookService;
 	private static final Logger log = LoggerFactory.getLogger(BookController.class);
-	
+	/*
 	@ApiOperation(value = "Retrieves all Books", notes = "This operation retrieves all Book entries. ", response = Book.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Book.class),
 			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
@@ -103,8 +103,7 @@ public class BookController {
 
 	@ApiOperation(value = "Updates partially a Book", nickname = "patchBook", notes = "This operation updates partially a Book entrty.", response = Book.class )
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updated", response = Book.class),
-			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
-			@ApiResponse(code = 401, message = "Unauthorized", response = Error.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),			@ApiResponse(code = 401, message = "Unauthorized", response = Error.class),
 			@ApiResponse(code = 403, message = "Forbidden", response = Error.class),
 			@ApiResponse(code = 404, message = "Not Found", response = Error.class),
 			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
@@ -117,6 +116,7 @@ public class BookController {
 			@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("isbn") String isbn) {
 		Book book = bookService.rentBook(body);
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
-	}
+		
+	}*/
 }
 
