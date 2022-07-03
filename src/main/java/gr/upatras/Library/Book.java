@@ -1,6 +1,7 @@
 package gr.upatras.Library;
 
 import javax.persistence.*;
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "book")
@@ -8,6 +9,7 @@ public class Book {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@ApiModelProperty(required = false, hidden = true)
 	private int id;
 	
 	private String ISBN;
