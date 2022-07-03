@@ -28,13 +28,20 @@ public class StudentController {
 		return studentService.getAllStudents();
 	}
 	
+	@GetMapping("/getStudent/{id}")
+	public Student getStudent(@PathVariable int id) {
+		log.info("Get Student by Id");
+		return studentService.getStudentById(id);
+	}
+	
 	@PostMapping("/createStudent")
 	public void createStudent(@RequestBody Student student) {
+		log.info("Created NEW user");
 		studentService.createStudent(student);
 	}
 	
 	@DeleteMapping("/deleteStudent/{id}")
-	public void deleteStudent(@RequestBody int id){
+	public void deleteStudent(@PathVariable int id){
 		log.info("Delete student by ID students");
 		studentService.deleteStudent(id);
 	}

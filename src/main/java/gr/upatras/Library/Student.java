@@ -3,12 +3,15 @@ package gr.upatras.Library;
 import javax.persistence.*;
 //import java.util.List; 
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "student")
 public class Student {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@ApiModelProperty(required = false, hidden = true)
 	private int id;
 	private String firstName;
     private String lastName;
@@ -64,6 +67,20 @@ public class Student {
 	 */
 	public void setAllowance(int allowance) {
 		this.allowance = allowance;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

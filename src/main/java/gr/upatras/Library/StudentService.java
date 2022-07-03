@@ -19,6 +19,11 @@ public class StudentService {
 		 return students;
 	 }
 	 
+	 public Student getStudentById(int id) {
+		 Student student = this.studentrepository.findById(id);
+		 return student;
+	 }
+	 
 	 public Student createStudent(Student student) {
 		 this.studentrepository.save(student);
 		 return student;
