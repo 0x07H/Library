@@ -1,6 +1,7 @@
 package gr.upatras.Library;
 
 import javax.persistence.*;
+//import java.util.List; 
 
 @Entity
 @Table(name = "student")
@@ -13,12 +14,13 @@ public class Student {
     private String lastName;
 	private int allowance;
 	
-    public Student(){
+
+	public Student(){
     }
-	
-	public Student(int id, String firstName, String lastName, int allowance) {
+
+	public Student(String firstName, String lastName, int allowance) {
 		this.firstName = firstName;
-        this.lastName = lastName;
+		this.lastName = lastName;
 		this.allowance = allowance;
 	}
 
