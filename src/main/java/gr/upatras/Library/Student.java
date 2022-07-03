@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class Student {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@ApiModelProperty(required = false, hidden = true)
 	private int id;
 	private String firstName;

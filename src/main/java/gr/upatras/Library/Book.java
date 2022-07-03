@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class Book {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@ApiModelProperty(required = false, hidden = true)
 	private int id;
 	
@@ -30,6 +30,8 @@ public class Book {
 		this.year = year;
 		this.booklender = booklender;
 	}
+
+	//ADD ANOTHER 
 
 	public int getId() {
 		return id;

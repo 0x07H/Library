@@ -69,16 +69,30 @@ public class StudentController {
 		studentService.updateStudentAllowance(id, allowance);
 	}
 	
-	@PatchMapping("/lendBook/{bookId}/{studentid}")
-	public ResponseEntity<Book> lendBook(@PathVariable int bookid, @PathVariable int studentId) {
+	@PatchMapping("/lendBook/{bookId}/{studentId}")
+	public ResponseEntity lendBook(@PathVariable int bookId, @PathVariable int studentId) {
 		log.info("Lend book");
 		//TODO
-		Book book = bookService.getBook(bookid);
+		Book book = bookService.getBook(bookId);
 		if (book.getBooklender() != null) {
 			return new ResponseEntity<>(book, null, HttpStatus.CONFLICT);
 		}
 		Student student = studentService.getStudentById(studentId);
 		book.setBooklender(student);
+		bookService.updateBook(book);
+		return new  ResponseEntity<>(book, null, HttpStatus.OK);
+	}
+	
+	@PatchMapping("/returndBook/{bookId}/{studentId}")
+	public ResponseEntity returndBook(@PathVariable int bookId, @PathVariable int studentId) {
+		log.info("Return book");
+		//TODO
+		Book book = bookService.getBook(bookId);
+		//Book is not lended
+		if (book.getBooklender() == null) {
+			return new ResponseEntity<>(book, null, HttpStatus.CONFLICT);
+		}
+		book.setBooklender(null);
 		bookService.updateBook(book);
 		return new  ResponseEntity<>(book, null, HttpStatus.OK);
 	}
