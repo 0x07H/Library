@@ -39,9 +39,10 @@ public class StudentController {
 	}
 
 	@PostMapping("/createStudent")
-	public void createStudent(@RequestBody Student student) {
+	public Student createStudent(@RequestBody Student student) {
 		log.info("Created NEW user");
 		studentService.createStudent(student);
+		return student;
 	}
 
 	@DeleteMapping("/deleteStudent/{id}")
@@ -73,11 +74,14 @@ public class StudentController {
 		log.info("Lend book");
 		// TODO
 		Book book = bookService.getBook(bookId);
+		log.info("Book = {}",book.getTitle());
 		// Check if book is lended
 		if (book.getBooklender() != null) {
+			log.info("book lender");
 			return new ResponseEntity<>(book, null, HttpStatus.CONFLICT);
 		}
 		Student student = studentService.getStudentById(studentId);
+		log.info("Student name: {}",student.getFirstname());
 		book.setBooklender(student);
 		bookService.updateBook(book);
 		return new ResponseEntity<Book>(book, null, HttpStatus.OK);

@@ -17,13 +17,13 @@ public class Book {
 	private String Author;
 	private int year;
 
-	@ManyToOne
+	@OneToOne
 	@ApiModelProperty(required = false, hidden = true)
 	private Student booklender;
 
 	public Book() {
 	}
-
+	
 	public Book(String ISBN, String title, String author, int year, Student booklender) {
 		this.ISBN = ISBN;
 		this.title = title;
