@@ -50,13 +50,13 @@ public class StudentController {
 		studentService.deleteStudent(id);
 	}
 
-	@PatchMapping("/updateStudentFirst/{id}/{first}/")
+	@PatchMapping("/updateStudentFirstname/{id}/{first}/")
 	public void updateFirstName(@PathVariable int id, @PathVariable String first) {
 		log.info("Update Firstname of student by ID students");
 		studentService.updateStudentFirstName(id, first);
 	}
 
-	@PatchMapping("/updateStudentFirst/{id}/{last}/")
+	@PatchMapping("/updateStudentLastname/{id}/{last}/")
 	public void updateLastName(@PathVariable int id, @PathVariable String last) {
 		log.info("Update Lastname of student by ID students");
 		studentService.updateStudentFirstName(id, last);
