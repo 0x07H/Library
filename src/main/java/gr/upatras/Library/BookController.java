@@ -167,22 +167,4 @@ public class BookController {
 		Book book = bookService.updateBookQuantity(id, quantity);
 		return book;
 	}
-
-	@ApiOperation(value = "Updates partially a Book", nickname = "patchBook", notes = "This operation updates partially a Book entrty.", response = Book.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updated", response = Book.class),
-			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
-			@ApiResponse(code = 401, message = "Unauthorized", response = Error.class),
-			@ApiResponse(code = 403, message = "Forbidden", response = Error.class),
-			@ApiResponse(code = 404, message = "Not Found", response = Error.class),
-			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
-			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
-			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
-	@RequestMapping(value = "/book/{isbn}", produces = { "application/json;charset=utf-8" }, consumes = {
-			"application/json;charset=utf-8" }, method = RequestMethod.PATCH)
-	ResponseEntity<Book> patchBook(@ApiParam(value = "The Book to be updated", required = true) @RequestBody Book body,
-			@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("isbn") String isbn) {
-		Book book = bookService.rentBook(body);
-		return new ResponseEntity<Book>(book, HttpStatus.OK);
-
-	}
 }

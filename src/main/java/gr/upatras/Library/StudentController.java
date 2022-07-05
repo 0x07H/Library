@@ -73,6 +73,7 @@ public class StudentController {
 		log.info("Lend book");
 		// TODO
 		Book book = bookService.getBook(bookId);
+		// Check if book is lended
 		if (book.getBooklender() != null) {
 			return new ResponseEntity<>(book, null, HttpStatus.CONFLICT);
 		}
@@ -83,7 +84,7 @@ public class StudentController {
 	}
 
 	@PatchMapping("/returndBook/{bookId}/{studentId}")
-	public ResponseEntity<Book> returndBook(@PathVariable int bookId, @PathVariable int studentId) {
+	public ResponseEntity<Book> returnBook(@PathVariable int bookId, @PathVariable int studentId) {
 		log.info("Return book");
 		// TODO
 		Book book = bookService.getBook(bookId);
