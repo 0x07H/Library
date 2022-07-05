@@ -8,18 +8,17 @@ import io.swagger.annotations.ApiModelProperty;
 @Entity
 @Table(name = "student")
 public class Student {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@ApiModelProperty(required = false, hidden = true)
 	private int id;
 	private String firstName;
-    private String lastName;
+	private String lastName;
 	private int allowance;
-	
 
-	public Student(){
-    }
+	public Student() {
+	}
 
 	public Student(String firstName, String lastName, int allowance) {
 		this.firstName = firstName;

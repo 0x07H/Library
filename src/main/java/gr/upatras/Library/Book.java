@@ -6,17 +6,17 @@ import io.swagger.annotations.ApiModelProperty;
 @Entity
 @Table(name = "book")
 public class Book {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@ApiModelProperty(required = false, hidden = true)
 	private int id;
-	
+
 	private String ISBN;
 	private String title;
 	private String Author;
-    private int year;
-	
+	private int year;
+
 	@ManyToOne
 	private Student booklender;
 
@@ -31,7 +31,7 @@ public class Book {
 		this.booklender = booklender;
 	}
 
-	//ADD ANOTHER 
+	// ADD ANOTHER
 
 	public int getId() {
 		return id;

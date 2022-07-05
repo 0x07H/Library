@@ -13,66 +13,65 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.HttpStatus;
 
-
 import java.util.List;
 
 @RestController
 public class StudentController {
-	
+
 	@Autowired
 	private StudentService studentService;
-	
+
 	@Autowired
 	private BookService bookService;
 
 	private static final Logger log = LoggerFactory.getLogger(BookController.class);
-	
+
 	@GetMapping("/getAllStudents")
-	public List<Student> getAllStudents(){
+	public List<Student> getAllStudents() {
 		log.info("Get all students");
 		return studentService.getAllStudents();
 	}
-	
+
 	@GetMapping("/getStudent/{id}")
 	public Student getStudent(@PathVariable int id) {
 		log.info("Get Student by Id");
 		return studentService.getStudentById(id);
 	}
-	
+
 	@PostMapping("/createStudent")
 	public void createStudent(@RequestBody Student student) {
 		log.info("Created NEW user");
 		studentService.createStudent(student);
 	}
-	
+
 	@DeleteMapping("/deleteStudent/{id}")
-	public void deleteStudent(@PathVariable int id){
+	public void deleteStudent(@PathVariable int id) {
 		log.info("Delete student by ID students");
 		studentService.deleteStudent(id);
 	}
-	
+
 	@PatchMapping("/updateStudentFirst/{id}/{first}/")
-	public void updateFirstName(@PathVariable  int id, @PathVariable String first) {
+	public void updateFirstName(@PathVariable int id, @PathVariable String first) {
 		log.info("Update Firstname of student by ID students");
 		studentService.updateStudentFirstName(id, first);
 	}
-	
+
 	@PatchMapping("/updateStudentFirst/{id}/{last}/")
-	public void updateLastName(@PathVariable  int id, @PathVariable String last) {
+	public void updateLastName(@PathVariable int id, @PathVariable String last) {
 		log.info("Update Lastname of student by ID students");
 		studentService.updateStudentFirstName(id, last);
 	}
-	
+
 	@PatchMapping("/updateStudentAllowance/{id}/{allowance}")
-	public void updateAllowance(@PathVariable  int id, @PathVariable int allowance) {
+	public void updateAllowance(@PathVariable int id, @PathVariable int allowance) {
 		log.info("Update Lastname of student by ID students");
 		studentService.updateStudentAllowance(id, allowance);
 	}
-	
+
 	@PatchMapping("/lendBook/{bookId}/{studentId}")
 	public ResponseEntity<Book> lendBook(@PathVariable int bookId, @PathVariable int studentId) {
 		log.info("Lend book");
-		//TODO
+		// TODO
 		Book book = bookService.getBook(bookId);
 		if (book.getBooklender() != null) {
 			return new ResponseEntity<>(book, null, HttpStatus.CONFLICT);
@@ -80,20 +79,20 @@ public class StudentController {
 		Student student = studentService.getStudentById(studentId);
 		book.setBooklender(student);
 		bookService.updateBook(book);
-		return new  ResponseEntity<Book>(book, null, HttpStatus.OK);
+		return new ResponseEntity<Book>(book, null, HttpStatus.OK);
 	}
-	
+
 	@PatchMapping("/returndBook/{bookId}/{studentId}")
 	public ResponseEntity<Book> returndBook(@PathVariable int bookId, @PathVariable int studentId) {
 		log.info("Return book");
-		//TODO
+		// TODO
 		Book book = bookService.getBook(bookId);
-		//Book is not lended
+		// Book is not lended
 		if (book.getBooklender() == null) {
 			return new ResponseEntity<Book>(book, null, HttpStatus.CONFLICT);
 		}
 		book.setBooklender(null);
 		bookService.updateBook(book);
-		return new  ResponseEntity<Book>(book, null, HttpStatus.OK);
+		return new ResponseEntity<Book>(book, null, HttpStatus.OK);
 	}
 }
