@@ -40,7 +40,8 @@ public class BookController {
 	@RequestMapping(value = "/book/", produces = { "application/json;charset=utf-8" }, method = RequestMethod.GET)
 	public List<Book> getAllBooks() {
 		log.info("Will return all Books");
-		return bookService.getAllBooks();
+		List<Book> books = bookService.getAllBooks();
+		return books;
 	}
 	
 	@ApiOperation(value = "Creates a Book", notes = "This operation creates a Book entry.", response = Book.class)
