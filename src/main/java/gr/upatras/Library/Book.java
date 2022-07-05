@@ -18,6 +18,7 @@ public class Book {
 	private int year;
 
 	@ManyToOne
+	@ApiModelProperty(required = false, hidden = true)
 	private Student booklender;
 
 	public Book() {
