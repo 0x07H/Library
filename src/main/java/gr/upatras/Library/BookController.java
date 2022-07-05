@@ -85,7 +85,7 @@ public class BookController {
 			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
 			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
-	@RequestMapping(value = "/book/{id}/{title}", produces = {
+	@RequestMapping(value = "/updateBookTitle/{id}/{title}", produces = {
 			"application/json;charset=utf-8" }, method = RequestMethod.GET)
 	public Book updateBookTitle(@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("id") int id,
 			@ApiParam(value = "Updated title of the Book", required = true) @PathVariable("title") String str) {
@@ -103,7 +103,7 @@ public class BookController {
 			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
 			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
-	@RequestMapping(value = "/book/{id}/{author}", produces = {
+	@RequestMapping(value = "/updateBookAuthor/{id}/{author}", produces = {
 			"application/json;charset=utf-8" }, method = RequestMethod.GET)
 	public Book updateBookAuthor(
 			@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("id") int id,
@@ -122,7 +122,7 @@ public class BookController {
 			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
 			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
-	@RequestMapping(value = "/book/{id}/{isbn}", produces = {
+	@RequestMapping(value = "/updateBookISBN/{id}/{isbn}", produces = {
 			"application/json;charset=utf-8" }, method = RequestMethod.GET)
 	public Book updateBookISBN(@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("id") int id,
 			@ApiParam(value = "Updated isbn of the Book", required = true) @PathVariable("isbn") String str) {
@@ -140,7 +140,7 @@ public class BookController {
 			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
 			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
-	@RequestMapping(value = "/book/{id}/{year}", produces = {
+	@RequestMapping(value = "/udateBookYear/{id}/{year}", produces = {
 			"application/json;charset=utf-8" }, method = RequestMethod.GET)
 	public Book updateBookYear(@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("id") int id,
 			@ApiParam(value = "Updated year of the Book", required = true) @PathVariable("year") int year) {
@@ -158,7 +158,7 @@ public class BookController {
 			@ApiResponse(code = 405, message = "Method Not allowed", response = Error.class),
 			@ApiResponse(code = 409, message = "Conflict", response = Error.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = Error.class) })
-	@RequestMapping(value = "/book/{id}/{quantity}", produces = {
+	@RequestMapping(value = "/updateBookQuantity/{id}/{quantity}", produces = {
 			"application/json;charset=utf-8" }, method = RequestMethod.GET)
 	public Book updateBookQuantity(
 			@ApiParam(value = "Identifier of the Book", required = true) @PathVariable("id") int id,
